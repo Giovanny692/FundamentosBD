@@ -1,5 +1,5 @@
 import tkinter as tk
-
+from conecciones import Conexion_entrada
 class Interfaz():
     def __init__(self):
         self.root = tk.Tk()
@@ -54,13 +54,16 @@ class Frame(tk.Frame):
         
     def poner_botones(self):
         self.boton_entrada = tk.Button(self,text='Entrada')   
-        self.boton_entrada.config(width=20,font=('Arial',12,'bold'),fg='red')
+        self.boton_entrada.config(width=20,font=('Arial',12,'bold'),fg='red',command=enviar_info(self.texto_id.get(),self.texto_nombre.get(),self.texto_telefono.get()))
         self.boton_entrada.grid(row=3,column=0) 
         
         self.boton_busqueda = tk.Button(self,text='Busqueda')   
         self.boton_busqueda.config(width=20,font=('Arial',12,'bold'),fg='green')
         self.boton_busqueda.grid(row=3,column=1) 
-        
+
+def enviar_info(id,nombre,telefono):
+    coneccion = Conexion_entrada(id,nombre,telefono)
+            
         
         
         
